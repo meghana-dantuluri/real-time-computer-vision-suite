@@ -1,124 +1,134 @@
-# **Real-Time Computer Vision Suite**
+Real-Time Computer Vision Suite
 
+A modular computer vision and machine learning project developed as part of a Data Science / Machine Learning internship. The repository is organized into separate modules for the assigned computer vision tasks.
 
+Current Progress
 
-A modular computer vision and machine learning project being developed as part of a Data Science / Machine Learning internship. The project extends an existing emotion detection application and develops separate modules for the six assigned tasks.
+Attendance System
 
+The attendance module combines face recognition, emotion detection, attendance logging, and session reporting.
 
+Implemented features:
+- Trains an LBPH face-recognition model using collected student face samples.
+- Recognizes enrolled student IDs through a webcam.
+- Detects facial expressions using an emotion classification model.
+- Records student ID, name, date, timestamp, attendance status, and predicted emotion.
+- Restricts official attendance recording to **9:30 AM–10:00 AM**.
+- Prevents duplicate attendance records for the same student on the same date.
+- Marks enrolled students who were not detected as absent in the session report.
+- Includes automated unit tests for attendance logging and session management.
 
-#### **Current Progress**
+Limitations: Recognition accuracy depends on lighting, camera quality, face samples, and the configured confidence threshold. Emotion predictions are model estimates and may be inaccurate. Test mode produces a separate test report and should not be treated as official attendance.
 
+Technology Stack
 
+- Python 3.11
+- OpenCV and OpenCV-contrib (LBPH face recognition)
+- TensorFlow / Keras (emotion classification)
+- NumPy
+- Pillow
+- scikit-learn
+- Python `unittest`
 
-###### **Attendance System — Initial Module**
+Setup
 
-\- Records student ID, name, date, timestamp, and attendance status in CSV format.
+Clone the repository and open a terminal in its root directory.
 
-\- Restricts attendance recording to 9:30–10:00 AM.
-
-\- Prevents duplicate attendance records for the same student on the same date.
-
-\- Includes automated unit tests for the recording logic.
-
-
-
-**Current limitation**: Student identification, automatic absence marking, and GUI integration have not yet been implemented.
-
-
-
-###### **Setup**
-
-
-
-Python 3.11 is recommended for the current development environment.
-
-
+Create a virtual environment:
 
 ```bash
-
 python -m venv .venv
-
 ```
 
-
-
-Activate the environment on Windows:
-
-
+Activate it on Windows:
 
 ```bat
-
-.venv\\Scripts\\activate
-
+.venv\Scripts\activate
 ```
 
-
-
-Install dependencies:
-
-
+Install the dependencies:
 
 ```bash
-
 python -m pip install -r requirements.txt
-
 ```
 
+Use Python 3.11 for the current dependency setup.
 
+Attendance System Setup
 
-###### **Run the Attendance Tests**
+1. Prepare the student face dataset
 
+Collect face samples for each enrolled student using `attendance/capture_faces.py`. Keep the collected images in the local `datasets/student_faces/` directory, organized by student ID.
 
+Use the required consent and privacy precautions when collecting or processing anyone's face images.
+
+2. Train the face-recognition model
+
+From the repository root, run:
+
+```bash
+python attendance/train_face_model.py
+```
+
+The training process generates the LBPH model and student-label mapping locally. These generated files are excluded from Git because they may contain or reveal information about enrolled students.
+
+3. Prepare the student roster
+
+Create a local `attendance/students.json` file containing the student IDs and corresponding names in the format expected by `attendance/run_attendance.py`.
+
+Do not commit the real roster to the public repository.
+
+4. Prepare the emotion model files
+
+The emotion detector loads a Keras model architecture, model weights, and a Haar cascade XML file. Place the required files in the locations configured in `attendance/run_attendance.py`, or update those paths for your own environment.
+
+The original emotion-model files are not included in this repository. Confirm the relevant licence or obtain permission before redistributing third-party model files.
+
+5. Run the attendance system
+
+From the repository root, run:
+
+```bash
+python attendance/run_attendance.py
+```
+
+Official attendance recording is limited to **9:30 AM–10:00 AM according to the computer's local clock**. Use test mode only for testing:
+
+```bash
+python attendance/run_attendance.py --test-mode
+```
+
+Test mode writes a separate test report. Check the script's console instructions for how to exit the webcam session.
+
+Run the Tests
 
 From the repository root:
 
-
-
 ```bash
-
-python -m unittest tests.test\_attendance -v
-
+python -m unittest discover -s tests -v
 ```
 
+The tests cover attendance logging and session-management behavior. They do not guarantee the real-world accuracy of face recognition or emotion classification.
 
+Project Structure
 
-###### **Project Modules**
+- `attendance/` — face recognition, emotion detection, attendance logging, and session management
+- `animal_detection/` — planned animal detection module
+- `car_detection/` — planned vehicle detection module
+- `drowsiness_detection/` — planned drowsiness detection module
+- `nationality_task/` — awaiting technical clarification; nationality should not be inferred from facial appearance
+- `sign_language/` — planned sign-language recognition module
+- `common/` — shared utilities
+- `tests/` — automated tests
+- `docs/` — project documentation
+- `datasets/` — local dataset workspace; data files are excluded from Git
 
+Data Privacy
 
+Student face images, student rosters, trained face-recognition files, and generated attendance reports are excluded from the public repository. Share datasets only with appropriate authorization and consent, using access-controlled storage where necessary.
 
-\- `attendance/` — attendance recording
+Dataset sources, permissions, and any approved Google Drive submission link will be documented once finalized.
 
-\- `animal\_detection/` — planned animal detection module
+Status
 
-\- `drowsiness\_detection/` — planned drowsiness detection module
-
-\- `nationality\_task/` — task awaiting technical clarification
-
-\- `sign\_language/` — planned sign-language recognition module
-
-\- `car\_detection/` — planned vehicle detection module
-
-\- `common/` — shared utilities
-
-\- `tests/` — automated tests
-
-\- `docs/` — project documentation
-
-\- `datasets/` — local dataset workspace; dataset files are not automatically published
-
-
-
-###### **Dataset Access**
-
-
-
-Dataset sources, usage permissions, and the Google Drive dataset link will be documented here once finalized.
-
-
-
-###### **Status**
-
-
-
-Development is ongoing. Only features explicitly described as implemented have been tested so far.
-
+Development is ongoing. Refer to the source code and tests for the current implementation. Planned modules are not represented as completed features.

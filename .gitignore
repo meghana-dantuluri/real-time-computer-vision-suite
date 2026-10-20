@@ -223,3 +223,14 @@ __pycache__/
 *.py[cod]
 .env
 .pynib_checkpoints/
+
+# Private student face images
+datasets/
+
+# Generated attendance reports
+attendance/*.csv
+
+# Private student roster and trained face model
+attendance/students.json
+attendance/student_labels.json
+attendance/student_lbph.yml
