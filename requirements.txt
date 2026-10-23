@@ -3,3 +3,5 @@ opencv-python==4.10.0.84
 Pillow
 scikit-learn
 tensorflow==2.15.1
+ultralytics
+speciesnet

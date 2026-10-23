@@ -234,3 +234,9 @@ attendance/*.csv
 attendance/students.json
 attendance/student_labels.json
 attendance/student_lbph.yml
+
+animal_detection/dataset/
+animal_detection/outputs/
+animal_detection/*.pt
+animal_detection/*_predictions.json
+animal_detection/__pycache__/yolo11n.pt
