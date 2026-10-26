@@ -240,3 +240,4 @@ animal_detection/outputs/
 animal_detection/*.pt
 animal_detection/*_predictions.json
 animal_detection/__pycache__/yolo11n.pt
+yolov8n.pt
