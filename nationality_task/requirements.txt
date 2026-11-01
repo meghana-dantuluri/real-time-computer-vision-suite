@@ -1,0 +1,6 @@
+opencv-python==4.11.0.86
+numpy==1.26.4
+deepface==0.0.93
+Pillow
+tensorflow==2.15.1
+tf-keras==2.15.0
