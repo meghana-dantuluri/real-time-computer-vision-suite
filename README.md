@@ -101,10 +101,25 @@ Official attendance is restricted to 9:30 AM–10:00 AM according to the compute
 
 ## Data Privacy
 
-Student face images, student rosters, trained face-recognition files, and generated attendance reports are excluded from the public repository. Collect and process face data only with appropriate authorization and consent. Use access-controlled storage when sharing datasets.
+Personal or sensitive data, including student face images, student rosters, identifiable attendance records, and private datasets, should not be committed to the public repository.
 
-Dataset sources, permissions, and any approved Google Drive submission link will be documented once finalized.
+Data collection and processing must be performed only with appropriate authorization and consent. Any datasets containing personal information should be stored in access-controlled locations.
+
+The sign language module includes a gesture-landmark dataset and a trained classification model for the supported static gestures. These are separate from personal face images and attendance records.
+
+Dataset sources, usage permissions, and submission links should be documented and verified before final submission.
 
 ## Status
 
-Development is ongoing. Planned modules are not represented as completed features.
+All six assigned project modules have been implemented:
+
+1. Emotion Detection
+2. Animal Detection
+3. Drowsiness Detection
+4. Nationality Category and Appearance Analysis
+5. Sign Language Detection
+6. Car Colour Detection and Traffic Monitoring
+
+Development of the assigned modules is complete. Final testing, documentation review, and submission preparation are in progress.
+
+The applications are prototypes and have the limitations described in their respective module documentation.
